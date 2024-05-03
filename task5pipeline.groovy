@@ -18,17 +18,15 @@ pipeline {
                             }
             post {
                 success {
-                    emailext subject: "Unit and Integration Tests Passed",
-                             body: "Unit and integration tests passed successfully.",
-                             to: "kushsofficial@gmail.com",
-                             attachmentsPattern: "**/*.log"
+                    mail to: "kushsofficial@gmail.com",
+                    subject: "Unit and Integration Tests Passed",
+                    body: "Unit and integration tests passed successfully.",
                     // Sending notification email on success with logs as attachment after the testing is complete
                 }
                 failure {
-                    emailext subject: "Unit and Integration Tests Failed",
-                             body: "Unit and integration tests failed. Please check the logs for details.",
-                             to: "your_email@example.com",
-                             attachmentsPattern: "**/*.log"
+                    mail to: "kushsofficial@gmail.com",
+                    subject: "Unit and Integration Tests Failed",
+                    body: "Unit and integration tests failed. Please check the logs for details.",
                     // Sending notification email on failure with logs as attachment if the testing stage fails
                 }
             }
@@ -44,17 +42,15 @@ pipeline {
             }
             post {
                 success {
-                    emailext subject: "Security Scan Passed successfully",
-                             body: "Security scan passed successfully.",
-                             to: "your_email@example.com",
-                             attachmentsPattern: "**/*.log"
+                    mail to: "kushsofficial@gmail.com",
+                    subject: "Security Scan Passed successfully",
+                    body: "Security scan passed successfully.",
                     // Sending notification email on success with logs as attachment after security scans passed successfully
                 }
                 failure {
-                    emailext subject: "Security Scan Failed",
-                             body: "Security scan failed. Please check the logs for details.",
-                             to: "your_email@example.com",
-                             attachmentsPattern: "**/*.log"
+                    mail to: "kushsofficial@gmail.com",
+                    subject: "Security Scan failed",
+                    body: "Security scan failed.",
                     // Sending notification email on failure with logs as attachment if the security scans fails.
                 }
             }
