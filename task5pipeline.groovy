@@ -36,6 +36,12 @@ pipeline {
                 echo "Performing code analysis using SonarQube"
             }
         }
+
+        stage('Code Improvement') {
+            steps {
+                echo "Code Improved"
+            }
+        }
          
         stage('Security Scan') {
             steps {
