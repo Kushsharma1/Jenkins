@@ -36,11 +36,7 @@ pipeline {
                 echo "Performing code analysis using SonarQube"
             }
         }
-         stage('Code Improvement') {
-            steps {
-                echo "Adding a new stage for testing"
-            }
-        }
+         
         stage('Security Scan') {
             steps {
                 echo "Performing security scan using OWASP Dependency-Check"
