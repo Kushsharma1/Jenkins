@@ -21,14 +21,14 @@ pipeline {
                     emailext to: 'kushsofficial@gmail.com',
                              subject: 'Unit and Integration Tests Passed',
                              body: 'Unit and integration tests passed successfully.',
-                             attachmentsPattern: '**/target/surefire-reports/*.xml' // Modify this pattern based on where your logs are stored
+                            attachLog: true
                              // Sending notification email on success with logs as attachments after the testing is complete
                 }
                 failure {
                     emailext to: 'kushsofficial@gmail.com',
                              subject: 'Unit and Integration Tests Failed',
                              body: 'Unit and integration tests failed. Please check the logs for details.',
-                             attachmentsPattern: '**/target/surefire-reports/*.xml' // Modify this pattern based on where your logs are stored
+                             attachLog: true 
                              // Sending notification email on failure with logs as attachment if the testing stage fails
                 }
             }
