@@ -53,7 +53,7 @@ pipeline {
                 success {
                     emailext to: 'kushsofficial@gmail.com',
                              subject: 'Security Scan Passed Successfully',
-                             body: 'Security scan passed successfully.',
+                             body: 'Security scan passed successfully. Making new commit',
                              attachLog: true
                              // Sending notification email on success with logs as an attachment after security scans passed successfully
                 }
