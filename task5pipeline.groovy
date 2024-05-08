@@ -54,14 +54,14 @@ pipeline {
                     emailext to: 'kushsofficial@gmail.com',
                              subject: 'Security Scan Passed Successfully',
                              body: 'Security scan passed successfully.',
-                             attachmentsPattern: '**/dependency-check-report/*.xml' // Modify this pattern based on where your logs are stored
+                             attachLog: true
                              // Sending notification email on success with logs as an attachment after security scans passed successfully
                 }
                 failure {
                     emailext to: 'kushsofficial@gmail.com',
                              subject: 'Security Scan Failed',
                              body: 'Security scan failed.',
-                             attachmentsPattern: '**/dependency-check-report/*.xml' // Modify this pattern based on where your logs are stored
+                             attachLog: true
                              // Sending notification email on failure with logs as attachment if the security scans fail.
                 }
             }
