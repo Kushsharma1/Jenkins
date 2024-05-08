@@ -15,19 +15,21 @@ pipeline {
             steps {
                 echo "Running unit tests using Selenium"
                 echo "Running integration tests using Selenium"
-                            }
+            }
             post {
                 success {
-                    mail to: "kushsofficial@gmail.com",
-                    subject: "Unit and Integration Tests Passed",
-                    body: "Unit and integration tests passed successfully."
-                    // Sending notification email on success with logs as attachments after the testing is complete
+                    emailext to: 'kushsofficial@gmail.com',
+                             subject: 'Unit and Integration Tests Passed',
+                             body: 'Unit and integration tests passed successfully.',
+                             attachmentsPattern: '**/target/surefire-reports/*.xml' // Modify this pattern based on where your logs are stored
+                             // Sending notification email on success with logs as attachments after the testing is complete
                 }
                 failure {
-                    mail to: "kushsofficial@gmail.com",
-                    subject: "Unit and Integration Tests Failed",
-                    body: "Unit and integration tests failed. Please check the logs for details."
-                    // Sending notification email on failure with logs as attachment if the testing stage fails
+                    emailext to: 'kushsofficial@gmail.com',
+                             subject: 'Unit and Integration Tests Failed',
+                             body: 'Unit and integration tests failed. Please check the logs for details.',
+                             attachmentsPattern: '**/target/surefire-reports/*.xml' // Modify this pattern based on where your logs are stored
+                             // Sending notification email on failure with logs as attachment if the testing stage fails
                 }
             }
         }
@@ -49,16 +51,18 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "kushsofficial@gmail.com",
-                    subject: "Security Scan Passed successfully",
-                    body: "Security scan passed successfully."
-                    // Sending notification email on success with logs as an attachment after security scans passed successfully
+                    emailext to: 'kushsofficial@gmail.com',
+                             subject: 'Security Scan Passed Successfully',
+                             body: 'Security scan passed successfully.',
+                             attachmentsPattern: '**/dependency-check-report/*.xml' // Modify this pattern based on where your logs are stored
+                             // Sending notification email on success with logs as an attachment after security scans passed successfully
                 }
                 failure {
-                    mail to: "kushsofficial@gmail.com",
-                    subject: "Security Scan failed",
-                    body: "Security scan failed."
-                    // Sending notification email on failure with logs as attachment if the security scans fail.
+                    emailext to: 'kushsofficial@gmail.com',
+                             subject: 'Security Scan Failed',
+                             body: 'Security scan failed.',
+                             attachmentsPattern: '**/dependency-check-report/*.xml' // Modify this pattern based on where your logs are stored
+                             // Sending notification email on failure with logs as attachment if the security scans fail.
                 }
             }
         }
@@ -77,6 +81,5 @@ pipeline {
                 echo "Deploying the application to the production server AWS EC2 instance"
             }
         }
-       
     }
 }
