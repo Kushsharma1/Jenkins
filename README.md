@@ -68,10 +68,10 @@ Follow these steps to get the project running:
     c. Create a `.env` file in the `backend` directory with your database credentials and server port:
     ```env
     PORT=5000
-    DB_HOST=your_database_host
-    DB_USER=your_database_user
-    DB_PASSWORD=your_database_password
-    DB_NAME=feed_formulation_db
+    DB_HOST=your_database_host   # e.g., localhost
+    DB_USER=your_database_user   # e.g., root
+    DB_PASSWORD=your_database_password  # Your database password
+    DB_NAME=feed_formulation_db  # The name of your database
     ```
     *(Replace the placeholders with your actual database details).*
     d. Create a backend entry point file (e.g., `server.js` or `index.js`) with the basic server setup and database connection (as shown in the previous detailed README).
@@ -95,11 +95,19 @@ Follow these steps to get the project running:
     The backend should now be running on the port specified in your `.env` file (e.g., `http://localhost:5000`).
 
 4.  **Database Configuration:**
-    Ensure that the database credentials in your `backend/.env` file match your MariaDB database setup. The database name should be `feed_formulation_db`, and the tables (`ingredient`, `feeds`, `feedingredient`) should already exist.
+    a. **Database Name:** Ensure your MariaDB database is named `feed_formulation_db`.
+    b. **Import Database Schema and Data:** You will need to import the database structure and initial data. This is typically done using an SQL file. In your previous project, this file was named `db.sql` and was located in a `database/sql` folder. Please locate this `db.sql` file (or ensure it is present in your new repository, potentially in a `database/sql` directory).
+    c. **Import using phpMyAdmin:** If you have phpMyAdmin installed (as part of XAMPP, for example), you can import the `db.sql` file by navigating to `http://localhost/phpmyadmin`, selecting the `feed_formulation_db` database, and then going to the "Import" tab.
+    d. **Import using MySQL command line:** Alternatively, you can use the MySQL command-line client. Open your terminal and run the following command, replacing the placeholders with your actual database credentials and the path to the `db.sql` file:
+    ```bash
+    mysql -h your_database_host -u your_database_user -p feed_formulation_db < path/to/db.sql
+    ```
+    You will be prompted to enter your database password.
+    e. **`.env` File:** As mentioned in the Backend Setup (step 3c), ensure you have a `.env` file in your `backend` directory with the correct database connection details. This is how your NodeJS backend will connect to the MariaDB database.
 
 ## Next Steps
 
-Once you have completed these steps, you should have both the frontend and backend development servers running on your local machine. You can then start working on the different features of the Feed Formulation Portal.
+Once you have completed these steps, you should have both the frontend and backend development servers running on your local machine, and your database should be configured. You can then start working on the different features of the Feed Formulation Portal.
 
 ## Contribution Guidelines
 
